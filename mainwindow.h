@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include<myqpainter.h>
+#include <Qt>
+
+#include <myqpainter.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    MyQPainter* wgt;
+    std::unique_ptr<MyQPainter> wgt;
 };
 
 #endif // MAINWINDOW_H

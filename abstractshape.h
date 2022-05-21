@@ -8,6 +8,8 @@ class AbstractShape
 public:
     virtual int getXCoord(const int index) = 0;
     virtual int getYCoord(const int index) = 0;
+
+    virtual bool checkMouseEnter(const QPoint&) = 0;
 };
 
 #endif // ABSTRACTSHAPE_H

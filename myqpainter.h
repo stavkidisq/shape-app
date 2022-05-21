@@ -2,10 +2,11 @@
 #define MYQPAINTER_H
 
 #include <QWidget>
+#include <QToolTip>
 
-#include<triangleshape.h>
-#include<squareshape.h>
-#include<circleshape.h>
+#include <triangleshape.h>
+#include <squareshape.h>
+#include <circleshape.h>
 
 class MyQPainter : public QWidget
 {
@@ -20,8 +21,15 @@ public:
     TriangleShape triangleShape;
     SquareShape squareShape;
 
+    QPoint mousePoint;
+
+    QBrush YellowShapeBrush = QBrush(QColor(0xFA, 0xFE, 0x78));
+    QBrush GreenShapeBrush = QBrush(QColor(0, 128, 50));
+
 protected:
-    void paintEvent(QPaintEvent*);
+    virtual void paintEvent(QPaintEvent*) override;
+    virtual void mouseMoveEvent(QMouseEvent*) override;
+
     void checkShapeType(AbstractShape&) const;
 signals:
 

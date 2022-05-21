@@ -3,7 +3,6 @@
 MyQPainter::MyQPainter(QWidget *parent)
     : QWidget{parent}
 {
-
 }
 
 void MyQPainter::paintEvent(QPaintEvent*)
@@ -15,4 +14,27 @@ void MyQPainter::paintEvent(QPaintEvent*)
     circleShape.drawCircleShape(painter);
     squareShape.drawSquareShape(painter);
     triangleShape.drawTriangleShape(painter);
+
+    painter.setBrush(GreenShapeBrush);
+
+    if(circleShape.checkMouseEnter(mousePoint))
+    {
+        circleShape.drawCircleShape(painter);
+    }
+
+    if(squareShape.checkMouseEnter(mousePoint))
+    {
+        squareShape.drawSquareShape(painter);
+    }
+
+    if(triangleShape.checkMouseEnter(mousePoint))
+    {
+        triangleShape.drawTriangleShape(painter);
+    }
+}
+
+void MyQPainter::mouseMoveEvent(QMouseEvent * event)
+{
+    mousePoint = event->pos();
+    update();
 }
