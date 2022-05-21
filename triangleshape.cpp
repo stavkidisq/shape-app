@@ -7,7 +7,7 @@ TriangleShape::TriangleShape(const std::array<QPoint, 3>& _XYCoords)
     XYCoords = _XYCoords;
 }
 
-void TriangleShape::drawTriangleShape(QPainter& ptr) const
+void TriangleShape::drawShape(QPainter& ptr)
 {
     QPolygon polygon;   // Используем класс полигона, чтобы отрисовать треугольник
     // Помещаем координаты точек в полигональную модель
@@ -29,6 +29,11 @@ bool TriangleShape::checkMouseEnter(const QPoint& mousePoint)
     {
         return false;
     }
+}
+
+void TriangleShape::showShapeDescription(QPoint & point)
+{
+    QToolTip::showText(point, "This is triangle shape");
 }
 
 TriangleShape::~TriangleShape()

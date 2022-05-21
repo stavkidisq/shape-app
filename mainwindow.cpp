@@ -12,11 +12,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     wgt = std::make_unique<MyQPainter>(new MyQPainter(this));
 
-    wgt->circleShape = CircleShape(QPoint(300, 100), 50);
-    wgt->triangleShape = TriangleShape({QPoint(100, 30), QPoint(100, 100), QPoint(50, 65)});
-    wgt->squareShape = SquareShape({QPoint(200, 300), QPoint(100, 150)});
+    wgt->shapes.push_back(std::unique_ptr<AbstractShape>(new CircleShape(QPoint(300, 100), 50)));
+    wgt->shapes.push_back(std::unique_ptr<AbstractShape>(new TriangleShape({ QPoint(100, 30), QPoint(100, 100), QPoint(50, 65) })));
+    wgt->shapes.push_back(std::unique_ptr<AbstractShape>(new SquareShape({QPoint(200, 300), QPoint(100, 150)})));
 
     ui->verticalLayout->addWidget(wgt.get());
+
     wgt->setMouseTracking(true);
 
     ui->retranslateUi(this);

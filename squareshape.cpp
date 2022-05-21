@@ -7,7 +7,7 @@ SquareShape::SquareShape(const std::array<QPoint, 2>& _XYCoords)
     XYCoords = _XYCoords;
 }
 
-void SquareShape::drawSquareShape(QPainter& ptr) const
+void SquareShape::drawShape(QPainter& ptr)
 {
     QPolygon polygon;   // Используем класс полигона, чтобы отрисовать треугольник
     // Помещаем координаты точек в полигональную модель
@@ -26,6 +26,11 @@ bool SquareShape::checkMouseEnter(const QPoint& mousePoint)
     {
         return false;
     }
+}
+
+void SquareShape::showShapeDescription(QPoint& point)
+{
+    QToolTip::showText(point, "This is square shape");
 }
 
 SquareShape::~SquareShape()

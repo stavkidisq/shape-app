@@ -11,25 +11,17 @@ void MyQPainter::paintEvent(QPaintEvent*)
     painter.setPen(QPen(Qt::black, 3, Qt::SolidLine)); // Настройки рисования
     painter.setBrush(QBrush(QColor(0xFA, 0xFE, 0x78))); // Настройка заднего фона фигуры
 
-    circleShape.drawCircleShape(painter);
-    squareShape.drawSquareShape(painter);
-    triangleShape.drawTriangleShape(painter);
-
-    painter.setBrush(GreenShapeBrush);
-
-    if(circleShape.checkMouseEnter(mousePoint))
+    for(auto& shape : shapes)
     {
-        circleShape.drawCircleShape(painter);
+        shape->drawShape(painter);
     }
 
-    if(squareShape.checkMouseEnter(mousePoint))
-    {
-        squareShape.drawSquareShape(painter);
-    }
+    painter.setBrush(QBrush(QColor(0, 128, 50)));
 
-    if(triangleShape.checkMouseEnter(mousePoint))
+    for(auto& shape : shapes)
     {
-        triangleShape.drawTriangleShape(painter);
+        if(shape->checkMouseEnter(mousePoint))
+            shape->drawShape(painter);
     }
 }
 
@@ -37,4 +29,17 @@ void MyQPainter::mouseMoveEvent(QMouseEvent * event)
 {
     mousePoint = event->pos();
     update();
+}
+
+void MyQPainter::mousePressEvent(QMouseEvent *)
+{
+    for(auto& shape : shapes)
+    {
+        if(shape->checkMouseEnter(mousePoint))
+        {
+            shape->showShapeDescription(mousePoint);
+        }
+    }
+
+    repaint();
 }

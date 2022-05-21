@@ -8,7 +8,7 @@ CircleShape::CircleShape(const QPoint& _centerPoint, const int _radius)
     radius = _radius;
 }
 
-void CircleShape::drawCircleShape(QPainter& painter) const
+void CircleShape::drawShape(QPainter& painter)
 {
     painter.drawEllipse(centerPoint, radius, radius);
 }
@@ -23,6 +23,11 @@ bool CircleShape::checkMouseEnter(const QPoint& mousePoint)
     {
         return false;
     }
+}
+
+void CircleShape::showShapeDescription(QPoint & point)
+{
+    QToolTip::showText(point, "This is circle shape");
 }
 
 CircleShape::~CircleShape()

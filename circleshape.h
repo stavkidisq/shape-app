@@ -3,6 +3,7 @@
 
 #include "abstractshape.h"
 #include <QMouseEvent>
+#include <QToolTip>
 
 class CircleShape : public AbstractShape
 {
@@ -12,10 +13,10 @@ public:
 
     virtual bool checkMouseEnter(const QPoint&) override;
 
-    void drawCircleShape(QPainter&) const;
+    virtual void drawShape(QPainter&) override;
+    virtual void showShapeDescription(QPoint&) override;
 
-    virtual int getXCoord(const int index) override { return index; };
-    virtual int getYCoord(const int index) override { return index; };
+    QString shapeDescription = "This is circle shape";
 
     ~CircleShape();
 

@@ -3,6 +3,7 @@
 
 #include "abstractshape.h"
 #include <QMouseEvent>
+#include <QToolTip>
 
 class SquareShape : public AbstractShape
 {
@@ -10,12 +11,11 @@ public:
     SquareShape();
     SquareShape(const std::array<QPoint, 2>& _XYCoords);
 
-    virtual int getXCoord(const int index) override { return index; };
-    virtual int getYCoord(const int index) override { return index; };
-
     virtual bool checkMouseEnter(const QPoint&) override;
+    virtual void drawShape(QPainter&) override;
+    virtual void showShapeDescription(QPoint&) override;
 
-    void drawSquareShape(QPainter&) const;
+    QString shapeDescription = "This is square shape";
 
     ~SquareShape();
 

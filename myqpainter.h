@@ -15,22 +15,15 @@ class MyQPainter : public QWidget
 public:
     explicit MyQPainter(QWidget *parent = nullptr);
 
-    enum Shape { Circle, Square, Triangle } shapeType;
-
-    CircleShape circleShape;
-    TriangleShape triangleShape;
-    SquareShape squareShape;
+    std::vector<std::unique_ptr<AbstractShape>> shapes;
 
     QPoint mousePoint;
-
-    QBrush YellowShapeBrush = QBrush(QColor(0xFA, 0xFE, 0x78));
-    QBrush GreenShapeBrush = QBrush(QColor(0, 128, 50));
 
 protected:
     virtual void paintEvent(QPaintEvent*) override;
     virtual void mouseMoveEvent(QMouseEvent*) override;
+    virtual void mousePressEvent(QMouseEvent*) override;
 
-    void checkShapeType(AbstractShape&) const;
 signals:
 
 };
