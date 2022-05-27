@@ -40,3 +40,23 @@ void MyQPainter::mouseMoveEvent(QMouseEvent * event)
     mousePoint = event->pos();
     update();
 }
+
+void MyQPainter::mousePressEvent(QMouseEvent * event)
+{
+    if(event->buttons() & Qt::RightButton)
+    {
+        QMenu* shapeMenu = new QMenu();
+        shapeMenu->addAction("Delete", this, SLOT(deleteShape()));
+
+        shapeMenu->popup(this->mapToGlobal(mousePoint));
+    }
+}
+
+void MyQPainter::deleteShape()
+{
+    for(size_t index = 0; index < shapes.size(); index++)
+    {
+        if(shapes.at(index)->checkMouseEnter(mousePoint))
+            shapes.erase(shapes.begin() + index);
+    }
+}

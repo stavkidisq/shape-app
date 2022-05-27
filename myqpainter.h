@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QToolTip>
 #include <QGraphicsSceneMouseEvent>
+#include <QMenu>
 
 #include <triangleshape.h>
 #include <squareshape.h>
@@ -24,9 +25,11 @@ public:
 protected:
     virtual void paintEvent(QPaintEvent*) override;
     virtual void mouseMoveEvent(QMouseEvent*) override;
+    virtual void mousePressEvent(QMouseEvent*) override;
 
     size_t hoverShapeIndex = 0;
-signals:
+protected slots:
+  void deleteShape();
 };
 
 #endif // MYQPAINTER_H
