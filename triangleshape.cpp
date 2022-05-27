@@ -36,9 +36,9 @@ bool TriangleShape::checkMouseEnter(const QPoint& mousePoint)
     }
 }
 
-void TriangleShape::showShapeDescription(QPoint & point)
+QString TriangleShape::getShapeDescription()
 {
-    QToolTip::showText(point, "This is triangle shape");
+    return "This is triangle shape";
 }
 
 void TriangleShape::setXYCoords(const QPoint& point)
@@ -51,16 +51,6 @@ void TriangleShape::setXYCoords(const QPoint& point)
     XYCoords[0] = XYCoords[0] - dot;
     XYCoords[1] = XYCoords[1] - dot;
     XYCoords[2] = XYCoords[2] - dot;
-}
-
-int TriangleShape::getX(const int index)
-{
-    return XYCoords[index].x();
-}
-
-int TriangleShape::getY(const int index)
-{
-    return XYCoords[index].y();
 }
 
 TriangleShape::~TriangleShape()

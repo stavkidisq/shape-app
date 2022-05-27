@@ -25,24 +25,14 @@ bool CircleShape::checkMouseEnter(const QPoint& mousePoint)
     }
 }
 
-void CircleShape::showShapeDescription(QPoint & point)
+QString CircleShape::getShapeDescription()
 {
-    QToolTip::showText(point, "This is circle shape");
+    return "This is circle shape";
 }
 
 void CircleShape::setXYCoords(const QPoint& point)
 {
     centerPoint = point;
-}
-
-int CircleShape::getX(const int)
-{
-    return centerPoint.x();
-}
-
-int CircleShape::getY(const int)
-{
-    return centerPoint.y();
 }
 
 CircleShape::~CircleShape()

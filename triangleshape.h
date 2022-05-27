@@ -14,11 +14,8 @@ public:
 
     virtual void drawShape(QPainter&) override;
     virtual bool checkMouseEnter(const QPoint&) override;
-    virtual void showShapeDescription(QPoint&) override;
+    virtual QString getShapeDescription() override;
     virtual void setXYCoords(const QPoint&) override;
-
-    virtual int getX(const int index) override;
-    virtual int getY(const int index) override;
 
     ~TriangleShape();
 private:

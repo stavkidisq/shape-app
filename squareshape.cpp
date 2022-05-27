@@ -28,9 +28,9 @@ bool SquareShape::checkMouseEnter(const QPoint& mousePoint)
     }
 }
 
-void SquareShape::showShapeDescription(QPoint& point)
+QString SquareShape::getShapeDescription()
 {
-    QToolTip::showText(point, "This is square shape");
+    return "This is square shape";
 }
 
 void SquareShape::setXYCoords(const QPoint& point)
@@ -43,16 +43,6 @@ void SquareShape::setXYCoords(const QPoint& point)
 
     XYCoords[0].ry() = (point.y() + ay / 2);
     XYCoords[1].ry() = (point.y() - ay / 2);
-}
-
-int SquareShape::getX(const int index)
-{
-    return XYCoords[index].x();
-}
-
-int SquareShape::getY(const int index)
-{
-    return XYCoords[index].y();
 }
 
 SquareShape::~SquareShape()
