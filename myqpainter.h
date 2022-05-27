@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QToolTip>
+#include <QGraphicsSceneMouseEvent>
 
 #include <triangleshape.h>
 #include <squareshape.h>
@@ -15,17 +16,17 @@ class MyQPainter : public QWidget
 public:
     explicit MyQPainter(QWidget *parent = nullptr);
 
-    std::vector<std::unique_ptr<AbstractShape>> shapes;
+    std::vector<std::shared_ptr<AbstractShape>> shapes;
+    CircleShape cShape;
 
     QPoint mousePoint;
 
 protected:
     virtual void paintEvent(QPaintEvent*) override;
     virtual void mouseMoveEvent(QMouseEvent*) override;
-    virtual void mousePressEvent(QMouseEvent*) override;
 
+    size_t hoverShapeIndex = 0;
 signals:
-
 };
 
 #endif // MYQPAINTER_H

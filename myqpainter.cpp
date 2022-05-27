@@ -3,6 +3,7 @@
 MyQPainter::MyQPainter(QWidget *parent)
     : QWidget{parent}
 {
+    this->setMouseTracking(true);
 }
 
 void MyQPainter::paintEvent(QPaintEvent*)
@@ -27,19 +28,15 @@ void MyQPainter::paintEvent(QPaintEvent*)
 
 void MyQPainter::mouseMoveEvent(QMouseEvent * event)
 {
-    mousePoint = event->pos();
-    update();
-}
-
-void MyQPainter::mousePressEvent(QMouseEvent *)
-{
-    for(auto& shape : shapes)
+    if(event->buttons() & Qt::LeftButton)
     {
-        if(shape->checkMouseEnter(mousePoint))
+        for(auto& shape : shapes)
         {
-            shape->showShapeDescription(mousePoint);
+            if(shape->checkMouseEnter(mousePoint))
+                shape->setXYCoords(mousePoint);
         }
     }
 
-    repaint();
+    mousePoint = event->pos();
+    update();
 }

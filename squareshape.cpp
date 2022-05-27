@@ -33,6 +33,28 @@ void SquareShape::showShapeDescription(QPoint& point)
     QToolTip::showText(point, "This is square shape");
 }
 
+void SquareShape::setXYCoords(const QPoint& point)
+{
+    int ax = std::abs(XYCoords[0].x() - XYCoords[1].x());
+    int ay = std::abs(XYCoords[0].y() - XYCoords[1].y());
+
+    XYCoords[0].rx() = (point.x() + ax / 2);
+    XYCoords[1].rx() = (point.x() - ax /2);
+
+    XYCoords[0].ry() = (point.y() + ay / 2);
+    XYCoords[1].ry() = (point.y() - ay / 2);
+}
+
+int SquareShape::getX(const int index)
+{
+    return XYCoords[index].x();
+}
+
+int SquareShape::getY(const int index)
+{
+    return XYCoords[index].y();
+}
+
 SquareShape::~SquareShape()
 {
 

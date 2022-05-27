@@ -30,6 +30,21 @@ void CircleShape::showShapeDescription(QPoint & point)
     QToolTip::showText(point, "This is circle shape");
 }
 
+void CircleShape::setXYCoords(const QPoint& point)
+{
+    centerPoint = point;
+}
+
+int CircleShape::getX(const int)
+{
+    return centerPoint.x();
+}
+
+int CircleShape::getY(const int)
+{
+    return centerPoint.y();
+}
+
 CircleShape::~CircleShape()
 {
 

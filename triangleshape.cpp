@@ -17,9 +17,14 @@ void TriangleShape::drawShape(QPainter& ptr)
 
 bool TriangleShape::checkMouseEnter(const QPoint& mousePoint)
 {
-    int p1 = (XYCoords[0].x() - mousePoint.x())*(XYCoords[1].y()-XYCoords[0].y())-(XYCoords[1].x()-XYCoords[0].x())*(XYCoords[0].y()-mousePoint.y());
-    int p2 = (XYCoords[1].x()-mousePoint.x())*(XYCoords[2].y()-XYCoords[1].y())-(XYCoords[2].x()-XYCoords[1].x())*(XYCoords[1].y()-mousePoint.y());
-    int p3 = (XYCoords[2].x()-mousePoint.x())*(XYCoords[0].y()-XYCoords[2].y())-(XYCoords[0].x()-XYCoords[2].x())*(XYCoords[2].y()-mousePoint.y());
+    auto getBorder = [mousePoint](const QPoint& a, const QPoint& b)
+    {
+        return (a.x() - mousePoint.x())*(b.y() - a.y()) - (b.x() - a.x())*(a.y() - mousePoint.y());
+    };
+
+    int p1 = getBorder(XYCoords[0], XYCoords[1]);
+    int p2 = getBorder(XYCoords[1], XYCoords[2]);
+    int p3 = getBorder(XYCoords[2], XYCoords[0]);
 
     if(p1*p2 > 0 && p1*p3 > 0 && p2*p3 > 0)
     {
@@ -34,6 +39,28 @@ bool TriangleShape::checkMouseEnter(const QPoint& mousePoint)
 void TriangleShape::showShapeDescription(QPoint & point)
 {
     QToolTip::showText(point, "This is triangle shape");
+}
+
+void TriangleShape::setXYCoords(const QPoint& point)
+{  
+    QPoint sumPoint = XYCoords[0] + XYCoords[1] + XYCoords[2];
+    QPoint center = QPoint(sumPoint.x() / 3, sumPoint.y() / 3);
+
+    QPoint dot = center - point;
+
+    XYCoords[0] = XYCoords[0] - dot;
+    XYCoords[1] = XYCoords[1] - dot;
+    XYCoords[2] = XYCoords[2] - dot;
+}
+
+int TriangleShape::getX(const int index)
+{
+    return XYCoords[index].x();
+}
+
+int TriangleShape::getY(const int index)
+{
+    return XYCoords[index].y();
 }
 
 TriangleShape::~TriangleShape()
