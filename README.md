@@ -1,4 +1,4 @@
-### shape-working-program
+### shape-app
 [![Last commit](https://img.shields.io/github/last-commit/Stavkidisq/ShapeWorkingProgram)]()
 [![Commit activity](https://img.shields.io/github/commit-activity/y/Stavkidisq/ShapeWorkingProgram)]()
 [![Github All Releases](https://img.shields.io/github/downloads/Stavkidisq/ShapeWorkingProgram/total.svg)]()
